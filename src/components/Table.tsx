@@ -5,9 +5,10 @@ import {TableRowsType} from "../utils/types";
 type PropsType = {
     table: Array<TableRowsType>
     deleteRow: (id: number) => void
+    changeRow: (id: number, name: string) => void
 };
 
-export const Table = ({table, deleteRow}: PropsType) => {
+export const Table = ({table, deleteRow, changeRow}: PropsType) => {
     const tableRows = table.map(tr =>
         <TableRow
             id={tr.id}
@@ -15,6 +16,8 @@ export const Table = ({table, deleteRow}: PropsType) => {
             type={tr.type}
             color={tr.color}
             deleteRow={deleteRow}
+            changeRow={changeRow}
+            key={tr.id}
         />
     );
 

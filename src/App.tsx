@@ -11,10 +11,20 @@ const App = () => {
 
     const [table, setTable] = useState(data);
 
-    const addRowHandler = () => setTable([...table, {id: 4, name: 'name3', type: 'main3', color: '#000000'}]);
+    const addRowHandler = () => setTable([...table, {id: table.length + 1, name: 'name3', type: 'main3', color: '#000000'}]);
 
     const deleteRowHandler = (rowId: number) => {
         setTable(table.filter(row => row.id !== rowId));
+    };
+
+    const changeRowHandler = (id: number, name: string) => {
+        setTable(table.map(tr => {
+            if (tr.id === id) {
+                return {...tr, name}
+            }
+
+            return tr;
+        }));
     };
 
     return (
@@ -22,6 +32,7 @@ const App = () => {
             <Table
                 table={table}
                 deleteRow={deleteRowHandler}
+                changeRow={changeRowHandler}
             />
             <button onClick={addRowHandler}>Add</button>
         </div>
