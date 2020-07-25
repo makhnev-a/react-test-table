@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Table} from "./components/Table";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const data = [
+        {id: 1, name: 'name1', type: 'main', color: '#f4f4f4'},
+        {id: 2, name: 'name2', type: 'main2', color: '#cccccc'},
+        {id: 3, name: 'name3', type: 'main3', color: '#000000'},
+    ];
+
+    const [table, setTable] = useState(data);
+
+    const addRowHandler = () => setTable([...table, {id: 4, name: 'name3', type: 'main3', color: '#000000'}]);
+
+    const deleteRowHandler = (rowId: number) => {
+        setTable(table.filter(row => row.id !== rowId));
+    };
+
+    return (
+        <div className="App">
+            <Table
+                table={table}
+                deleteRow={deleteRowHandler}
+            />
+            <button onClick={addRowHandler}>Add</button>
+        </div>
+    );
 }
 
 export default App;
