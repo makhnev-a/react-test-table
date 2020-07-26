@@ -24,10 +24,11 @@ const App = () => {
         setTable(table.filter((row: TableRowsType) => row.id !== rowId));
     };
 
-    const changeRowHandler = (id: number, name: string) => {
+    const changeRowHandler = (id: number, dataName: string, dataValue: string) => {
         setTable(table.map((tr: TableRowsType) => {
             if (tr.id === id) {
-                return {...tr, name}
+                debugger
+                return {...tr, [dataName]: dataValue}
             }
 
             return tr;

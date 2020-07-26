@@ -6,7 +6,7 @@ import styles from './Table.module.css';
 type PropsType = {
     table: Array<TableRowsType>
     deleteRow: (id: number) => void
-    changeRow: (id: number, name: string) => void
+    changeRow: (id: number, dataName: string, dataValue: string) => void
 };
 
 export const Table = ({table, deleteRow, changeRow}: PropsType) => {

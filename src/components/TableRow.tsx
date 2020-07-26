@@ -7,7 +7,7 @@ type PropsType = {
     type: string
     color: string
     deleteRow: (id: number) => void
-    changeRow: (id: number, name: string) => void
+    changeRow: (id: number, dataName: string, dataValue: string) => void
 };
 
 export const TableRow = ({id, name, type, color, deleteRow, changeRow}: PropsType) => {

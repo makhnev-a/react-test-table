@@ -3,7 +3,7 @@ import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 type PropsType = {
     id: number
     rowName: string
-    changeRow: (id: number, rowName: string) => void
+    changeRow: (id: number, dataName: string, dataValue: string) => void
     isColor?: boolean
     dataAttr: string
 };
@@ -23,7 +23,8 @@ export const TableCell = (props: PropsType) => {
     const onNameActiveClick = () => setNameActive(true);
     const onNameInActiveClick = () => {
         setNameActive(false);
-        props.changeRow(props.id, props.rowName);
+        debugger
+        props.changeRow(props.id, props.dataAttr, cellName);
     };
 
     const onChangeRow = (e: ChangeEvent<HTMLInputElement>) => setCellName(e.currentTarget.value);
@@ -44,7 +45,7 @@ export const TableCell = (props: PropsType) => {
                         type={props.isColor ? 'color' : 'text'}
                         ref={inputRef}
                     />
-                    : <span style={{backgroundColor: cellName}}>{cellName}</span>
+                    : <span>{cellName}</span>
             }
         </td>
     );
