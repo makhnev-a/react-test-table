@@ -1,6 +1,7 @@
 import React from "react";
 import {TableRow} from "./TableRow";
 import {TableRowsType} from "../utils/types";
+import styles from './Table.module.css';
 
 type PropsType = {
     table: Array<TableRowsType>
@@ -23,13 +24,14 @@ export const Table = ({table, deleteRow, changeRow}: PropsType) => {
 
     return (
         <>
-            <table>
+            <table className={styles.table}>
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>name</th>
                         <th>type</th>
                         <th>color</th>
+                        <th>delete</th>
                     </tr>
                 </thead>
                 <tbody>

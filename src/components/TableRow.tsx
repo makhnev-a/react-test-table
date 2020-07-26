@@ -16,11 +16,11 @@ export const TableRow = ({id, name, type, color, deleteRow, changeRow}: PropsTyp
     return (
         <>
             <tr>
-                <td>{id}</td>
-                <TableCell id={id} rowName={name} changeRow={changeRow}/>
-                <TableCell id={id} rowName={type} changeRow={changeRow}/>
-                <TableCell id={id} rowName={color} isColor changeRow={changeRow}/>
-                <td>
+                <td data-column={'id'}>{id}</td>
+                <TableCell id={id} rowName={name} changeRow={changeRow} dataAttr={'name'}/>
+                <TableCell id={id} rowName={type} changeRow={changeRow} dataAttr={'type'}/>
+                <TableCell id={id} rowName={color} isColor changeRow={changeRow} dataAttr={'color'}/>
+                <td data-column={'delete'}>
                     <button onClick={onDeleteRow}>X</button>
                 </td>
             </tr>

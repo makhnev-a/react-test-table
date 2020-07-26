@@ -5,6 +5,7 @@ type PropsType = {
     rowName: string
     changeRow: (id: number, rowName: string) => void
     isColor?: boolean
+    dataAttr: string
 };
 
 export const TableCell = (props: PropsType) => {
@@ -31,6 +32,7 @@ export const TableCell = (props: PropsType) => {
         <td
             onClick={onNameActiveClick}
             onBlur={onNameInActiveClick}
+            data-column={props.dataAttr}
         >
             {
                 nameActive
