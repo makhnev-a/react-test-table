@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Table} from "./components/Table";
+import {useStorage} from "./utils/customHooks";
 
 const App = () => {
     const data = [
@@ -26,6 +27,10 @@ const App = () => {
             return tr;
         }));
     };
+
+    useEffect(() => {
+        // useStorage()
+    }, []);
 
     return (
         <div className="App">
