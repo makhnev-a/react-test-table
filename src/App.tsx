@@ -3,6 +3,7 @@ import './App.css';
 import {Table} from "./components/Table";
 import {useStorage} from "./utils/customHooks";
 import {TableRowsType} from "./utils/types";
+import {Button} from "./components/Button";
 
 const data = [
     {id: 2, name: 'name2', type: 'main2', color: '#cccccc'},
@@ -15,8 +16,8 @@ const App = () => {
 
     const addRowHandler = () => setTable([...table, {
         id: table.length + 1,
-        name: 'name3',
-        type: 'main3',
+        name: 'nameNewTest',
+        type: 'mainNewTest',
         color: '#000000'
     }]);
 
@@ -82,7 +83,11 @@ const App = () => {
                 tableRowUp={tableRowUp}
                 tableRowDown={tableRowDown}
             />
-            <button onClick={addRowHandler}>Add</button>
+            <Button
+                onHandler={addRowHandler}
+                btnName={'add'}
+                btnText={'Add'}
+            />
         </div>
     );
 }

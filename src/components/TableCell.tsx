@@ -8,9 +8,9 @@ type PropsType = {
     dataAttr: string
 };
 
-export const TableCell = (props: PropsType) => {
+export const TableCell = ({id, rowName, changeRow, isColor, dataAttr}: PropsType) => {
     const [nameActive, setNameActive] = useState(false);
-    const [cellName, setCellName] = useState(props.rowName);
+    const [cellName, setCellName] = useState(rowName);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
@@ -23,8 +23,7 @@ export const TableCell = (props: PropsType) => {
     const onNameActiveClick = () => setNameActive(true);
     const onNameInActiveClick = () => {
         setNameActive(false);
-        debugger
-        props.changeRow(props.id, props.dataAttr, cellName);
+        changeRow(id, dataAttr, cellName);
     };
 
     const onChangeRow = (e: ChangeEvent<HTMLInputElement>) => setCellName(e.currentTarget.value);
@@ -33,7 +32,7 @@ export const TableCell = (props: PropsType) => {
         <td
             onClick={onNameActiveClick}
             onBlur={onNameInActiveClick}
-            data-column={props.dataAttr}
+            data-column={dataAttr}
         >
             {
                 nameActive
@@ -42,7 +41,7 @@ export const TableCell = (props: PropsType) => {
                         autoFocus
                         value={cellName}
                         onChange={onChangeRow}
-                        type={props.isColor ? 'color' : 'text'}
+                        type={isColor ? 'color' : 'text'}
                         ref={inputRef}
                     />
                     : <span>{cellName}</span>
