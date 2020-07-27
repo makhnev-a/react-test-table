@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import {Table} from "./components/Table";
+import {Table} from "./components/Table/Table";
 import {useStorage} from "./utils/customHooks";
 import {TableRowsType} from "./utils/types";
-import {Button} from "./components/Button";
+import {Button} from "./components/Button/Button";
 
 const data = [
     {id: 2, name: 'name2', type: 'main2', color: '#cccccc'},

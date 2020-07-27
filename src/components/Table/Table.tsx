@@ -1,6 +1,6 @@
 import React from "react";
-import {TableRow} from "./TableRow";
-import {TableRowsType} from "../utils/types";
+import {TableRow} from "./TableRow/TableRow";
+import {TableRowsType} from "../../utils/types";
 import styles from './Table.module.css';
 
 type PropsType = {

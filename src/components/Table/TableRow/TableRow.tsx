@@ -1,7 +1,7 @@
 import React from "react";
-import {TableCell} from "./TableCell";
+import {TableCell} from "../TableCell/TableCell";
 import styles from './TableRow.module.css';
-import {Button} from "./Button";
+import {Button} from "../../Button/Button";
 
 type PropsType = {
     id: number
