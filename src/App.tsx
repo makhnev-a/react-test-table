@@ -27,12 +27,50 @@ const App = () => {
     const changeRowHandler = (id: number, dataName: string, dataValue: string) => {
         setTable(table.map((tr: TableRowsType) => {
             if (tr.id === id) {
-                debugger
                 return {...tr, [dataName]: dataValue}
             }
 
             return tr;
         }));
+    };
+
+    const swap = (arr = [], start = 0, end = 0) => {
+        let result = new Map();
+
+        arr.map((_, index) => {
+            switch (index) {
+                case start:
+                    return result.set(index, arr[end]);
+                case end:
+                    return result.set(index, arr[start]);
+                default:
+                    return result.set(index, arr[index]);
+            }
+        });
+
+        return Array.from(result.values());
+    };
+
+    const tableRowDown = (index: number) => {
+        let newIndex = index + 1;
+
+        if (index === table.length - 1) {
+            table.unshift(table.pop());
+            setTable([...table]);
+        } else {
+            setTable(swap(table, index, newIndex));
+        }
+    };
+
+    const tableRowUp = (index: number) => {
+        let newIndex = index - 1;
+
+        if (newIndex < 0) {
+            table.push(table.shift());
+            setTable([...table]);
+        } else {
+            setTable(swap(table, index, newIndex));
+        }
     };
 
     return (
@@ -41,6 +79,8 @@ const App = () => {
                 table={table}
                 deleteRow={deleteRowHandler}
                 changeRow={changeRowHandler}
+                tableRowUp={tableRowUp}
+                tableRowDown={tableRowDown}
             />
             <button onClick={addRowHandler}>Add</button>
         </div>
