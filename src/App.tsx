@@ -15,7 +15,7 @@ const App = () => {
     const [table, setTable] = useStorage('table', data);
 
     const addRowHandler = () => setTable([...table, {
-        id: table.length + 1,
+        id: table.length ? Math.max(...table.map((row: TableRowsType) => row.id)) + 1 : 1,
         name: 'nameNewTest',
         type: 'mainNewTest',
         color: '#000000'

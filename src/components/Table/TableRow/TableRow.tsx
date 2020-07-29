@@ -2,6 +2,7 @@ import React from "react";
 import {TableCell} from "../TableCell/TableCell";
 import styles from './TableRow.module.css';
 import {Button} from "../../Button/Button";
+import {ColorPicker} from "./ColorPicker/ColorPicker";
 
 type PropsType = {
     id: number
@@ -26,7 +27,8 @@ export const TableRow = ({id, index, name, type, color, deleteRow, changeRow, ta
                 <td data-column={'id'}>{id}</td>
                 <TableCell id={id} rowName={name} changeRow={changeRow} dataAttr={'name'}/>
                 <TableCell id={id} rowName={type} changeRow={changeRow} dataAttr={'type'}/>
-                <TableCell id={id} rowName={color} isColor changeRow={changeRow} dataAttr={'color'}/>
+                {/*<TableCell id={id} rowName={color} isColor changeRow={changeRow} dataAttr={'color'}/>*/}
+                <ColorPicker rowName={color} changeRow={changeRow} id={id} dataAttr={'color'} />
                 <td data-column={'delete'}>
                     <div className={styles.actionCell}>
                         <div className={styles.filter}>

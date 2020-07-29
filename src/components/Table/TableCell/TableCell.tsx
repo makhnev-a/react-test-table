@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 
 type PropsType = {
     id: number
@@ -11,14 +11,6 @@ type PropsType = {
 export const TableCell = ({id, rowName, changeRow, isColor, dataAttr}: PropsType) => {
     const [nameActive, setNameActive] = useState(false);
     const [cellName, setCellName] = useState(rowName);
-    const inputRef = useRef<HTMLInputElement | null>(null);
-
-    useEffect(() => {
-        if (nameActive) {
-            console.log(inputRef.current);
-            inputRef.current?.click();
-        }
-    }, [nameActive]);
 
     const onNameActiveClick = () => setNameActive(true);
     const onNameInActiveClick = () => {
@@ -42,7 +34,6 @@ export const TableCell = ({id, rowName, changeRow, isColor, dataAttr}: PropsType
                         value={cellName}
                         onChange={onChangeRow}
                         type={isColor ? 'color' : 'text'}
-                        ref={inputRef}
                     />
                     : <span>{cellName}</span>
             }
